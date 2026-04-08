@@ -1,0 +1,36 @@
+.box{
+  height: 300px;
+  width: 300px;
+  background-color: red;
+  border-radius: 2rem;
+  padding: 2rem;
+  font-size: 1.5rem;
+  color: blue;
+}
+
+.box-wrapper{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.circle{
+  background-color: red;
+  border: 3px solid black;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+  .box{
+    background-color: blue;
+  }
+}
+
+@media (max-width: 768px) {
+  .box{
+    background-color: pink;
+  }
+}

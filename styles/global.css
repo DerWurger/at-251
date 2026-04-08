@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "Main";
+  src: url(../fonts/Lobster-Regular.ttf) format('truetype');
+}
+
+html, body{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+}
+
+.my-font{
+  font-family: "Main", sans-serif;
+}

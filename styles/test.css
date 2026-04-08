@@ -1,0 +1,240 @@
+html, body{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+*{
+  box-sizing: border-box;
+}
+
+h1, h2, h3{
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+#wrapper{
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+#wrapper > section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  border: 4px solid black;
+  padding: 1rem;
+}
+
+.demo-element{
+  width: 100%;
+  min-height: 300px;
+  border: 2px solid black;
+  border-radius: 2rem;
+  padding: 1rem;
+  background-color: rgba(127, 255, 212, 0.501);
+}
+
+.box{
+  width: 100px;
+  height: 100px;
+  border-radius: 5%;
+  background-color: #009fff;
+}
+
+#flex-container{
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#grid-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-areas: 
+  "large-card large-card card2 card3"
+  "large-card large-card card4 card5"
+  "card6 card7 . ."; */
+  gap: 1rem;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 100px;
+  width: 100%;
+}
+
+.my-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  /* grid-template-areas: 
+  "card1 card2 card3"
+  "card4 card5 card6"
+  "btn prom prom"; */
+  grid-template-areas: 
+  ". . ."
+  ". . ."
+  "btn prom prom";
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+  background-color: #ccffcc;
+}
+
+.btn{
+  grid-area: btn;
+}
+
+.prom{
+  grid-area: prom;
+}
+
+.card:first-child{
+  /* grid-area: large-card; */
+   /* или 1 / 3 */ 
+  /* grid-column: span 2;
+  grid-row: span 2; */
+  /* width: 100%;
+  height: 100%; */
+
+  /* grid-area: card1; */
+}
+
+/* .card:nth-child(2){
+  grid-area: card2;
+}
+
+.card:nth-child(3){
+  grid-area: card3;
+}
+.card:nth-child(4){
+  grid-area: card4;
+}
+.card:nth-child(5){
+  grid-area: card5;
+}
+.card:nth-child(6){
+  grid-area: card6;
+}
+.card:nth-child(7){
+  grid-area: card7;
+} */
+
+.btn{
+  height: 50px;
+  cursor: pointer;
+  border-radius: 1rem;
+  background-color: #00f1ff;
+}
+
+.btn:hover{
+  background-color: #0099ff;
+}
+
+.prom{
+  background-color: #e2b259;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.card h3{
+  background-color: azure;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.card img{
+  height: calc(100% - 52px);
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1000px) {
+  #wrapper{
+    flex-direction: column;
+  }
+
+  #wrapper > section{
+    width: 100%;
+  }
+
+  .my-grid{
+    grid-template-columns: 1fr 1fr 100px;
+    grid-template-rows: repeat(5, 1fr);
+    /* grid-template-rows: repeat(4, 1fr); */
+    /* grid-template-areas: 
+    "card1 card2 prom"
+    "card3 card4 prom"
+    "card5 card6 prom"
+    "btn   btn   prom"; */
+    /* grid-template-areas: 
+    ".   .   prom"
+    ".   .   prom"
+    ".   .   prom"
+    "btn btn prom"; */
+
+    grid-template-areas: none;
+  }
+
+  .my-grid .btn{
+    height: 100%;
+  }
+
+  .my-grid .prom{
+    height: 100%;
+  }
+
+  .prom p{
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 0;
+
+    writing-mode: vertical-rl;
+  }
+
+  /* для динамичных карточек стили */
+  .prom{
+    grid-area: auto;
+    grid-column: 3;
+    grid-row: 1 / 99;
+  }
+
+  .btn{
+    grid-area: auto;
+    grid-column: 1 / 3;
+    order: 1;
+  }
+}
+
+@media (max-width: 600px){
+   .prom{
+    grid-area: auto; /* СБРОС: отвязываем элемент от несуществующей зоны */
+    order: -1;       /* Кидаем наверх */
+    height: auto;    /* СБРОС: убираем 100% высоту от планшета */
+  }
+
+  .btn{
+    grid-area: auto; /* СБРОС: отвязываем элемент от несуществующей зоны */
+    order: 1;        /* Кидаем вниз */
+    height: 50px;    /* Возвращаем кнопке её родную высоту */
+  }
+
+  .my-grid{
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .prom p{
+    writing-mode: horizontal-tb;
+  }
+}

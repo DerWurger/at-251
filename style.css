@@ -1,0 +1,158 @@
+:root{
+  --red: #c53333;
+  --green: #33c533;
+  --blue: #3333c5;
+  --body-bg: #f1f1f1;
+
+  --default-gap: 2rem;
+  --rounded: 1rem;
+  --rounded-xl: calc(var(--rounded) * 1.5);
+  --rounded-2xl: calc(var(--rounded) * 2);
+}
+
+[data-theme='dark']{
+  --red: #fe6666;
+  --green: #6eff6e;
+  --blue: #6e6eff;
+  --body-bg: #1f1f1f;
+}
+
+body{
+  background-color: var(--body-bg);
+  padding: var(--default-gap);
+}
+
+.box{
+  width: 100px;
+  height: 100px;
+  background-color: var(--red);
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-container{
+  width: 800px;
+  padding: 1rem;
+  border: 4px solid black;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, minmax(200px, 1fr));
+  grid-template-areas: 
+  "square square square"
+  "square square square"
+  "btn    prom prom"
+  ;
+  gap: 1rem;
+}
+
+.square{
+  border: 2px solid var(--red);
+  grid-area: square;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  animation-play-state: paused;
+}
+.square:hover{
+  animation-play-state: running;
+}
+
+.btn{
+  background-color: var(--blue);
+  grid-area: btn;
+}
+
+.prom{
+  background-color: var(--green);
+  grid-area: prom;
+}
+
+/* .rounded{
+  border-radius: var(--rounded);
+}
+
+.rounded-xl{
+  border-radius: var(--rounded-xl);
+}
+
+.rounded-2xl{
+  border-radius: var(--rounded-2xl);
+}
+
+.box{
+  width: 100px;
+  height: 100px;
+  background-color: var(--red);
+  color: transparent;
+}
+
+.btn{
+  padding: 1rem;
+  background-color: var(--blue);
+  color: whitesmoke;
+}
+
+.horizontal-rectangle{
+  width: 300px;
+  height: 150px;
+  background-color: var(--green);
+}
+
+.flex-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border: 2px solid black;
+  width: 350px;
+  height: 800px;
+  padding: calc(var(--default-gap) / 1.25);
+  gap: calc(var(--default-gap) / 3);
+} */
+
+@media (max-width: 900px) {
+  .grid-container{
+    grid-template-areas: 
+    "square square prom"
+    "square square prom"
+    "btn btn prom"
+    ;
+  }
+}
+
+@media (max-width: 600px){
+  .grid-container{
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+
+  .btn, .prom, .square{
+    grid-area: auto;
+  }
+
+  .prom{
+    order: -1;
+  }
+
+  .btn{
+    order: 1;
+  }
+}
+
+@media (prefers-color-scheme: dark){
+  /* :root{
+    --red: #fe6666;
+    --green: #6eff6e;
+    --blue: #6e6eff;
+    --body-bg: #1f1f1f;
+  } */
+}

@@ -1,0 +1,4 @@
+h1.headers, h2.headers, h3.headers{
+  text-decoration: underline blueviolet;
+  color: greenyellow;
+}

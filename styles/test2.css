@@ -1,0 +1,112 @@
+:root{
+  --red: #c53333;
+  --green: #33c533;
+  --blue: #3333c5;
+  --body-bg: #f1f1f1;
+}
+
+[data-theme='dark']{
+  --red: #fe6666;
+  --green: #6eff6e;
+  --blue: #6e6eff;
+  --body-bg: #1f1f1f;
+}
+
+html, body{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body{
+  background-color: var(--body-bg);
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#my-grid{
+  width: 800px;
+  border: 4px solid black;
+
+  place-content: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, minmax(200px, 1fr));
+  grid-template-areas:
+  "square square square"
+  "square square square"
+  "hrec   hrec   vrec";
+}
+
+.square, .vertical-rectangle, .horizontal-rectangle{
+  border-radius: 2rem;
+}
+
+.square{
+  border: 2px solid var(--red);
+  width: 100%;
+  height: 100%;
+
+  grid-area: square;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.box{
+  height: 100px;
+  width: 100px;
+  background-color: var(--red);
+}
+
+.vertical-rectangle{
+  background-color: var(--green);
+  padding: 1rem;
+
+  grid-area: vrec;
+}
+
+.horizontal-rectangle{
+  background-color: var(--blue);
+  grid-area: hrec;
+}
+
+@media (max-width: 900px){
+  #my-grid{
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "square square vrec"
+    "square square vrec"
+    "square square vrec"
+    "square square vrec"
+    "hrec hrec vrec"
+    ;
+  }
+
+  .horizontal-rectangle{
+    height: 100px;
+  }
+}
+
+@media (max-width: 600px){
+  #my-grid{
+    grid-template-areas: none;
+    grid-template-columns: 1fr;
+  }
+
+  .horizontal-rectangle, .vertical-rectangle, .square{
+    grid-area: auto;
+  }
+
+  .horizontal-rectangle{
+    order: 1;
+  }
+}
