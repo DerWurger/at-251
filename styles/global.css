@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Main";
   src: url(../fonts/Lobster-Regular.ttf) format('truetype');
+  /**/
 }
 
 html, body{
